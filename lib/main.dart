@@ -72,6 +72,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 setState(() {
                   if (quizBrain.getQuestionAnswer()){
+                    quizBrain.correctAnswer();
                     scoreKeeper.add(
                       Icon(
                         Icons.check,
@@ -80,6 +81,7 @@ class _QuizPageState extends State<QuizPage> {
                     );
                   }
                   else{
+                    quizBrain.incorrectAnswer();
                     scoreKeeper.add(
                       Icon(
                         Icons.close,
@@ -87,7 +89,7 @@ class _QuizPageState extends State<QuizPage> {
                       ),
                     );
                   }
-                  quizBrain.nextQuestion();
+                  quizBrain.nextQuestion(context);
                 }
                 );
               },
@@ -112,6 +114,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 setState(() {
                   if (!quizBrain.getQuestionAnswer()) {
+                    quizBrain.incorrectAnswer();
                     scoreKeeper.add(
                       Icon(
                         Icons.check,
@@ -120,6 +123,7 @@ class _QuizPageState extends State<QuizPage> {
                     );
                   }
                   else {
+                    quizBrain.incorrectAnswer();
                     scoreKeeper.add(
                       Icon(
                         Icons.close,
@@ -127,7 +131,7 @@ class _QuizPageState extends State<QuizPage> {
                       ),
                     );
                   }
-                  quizBrain.nextQuestion();
+                  quizBrain.nextQuestion(context);
                 });
               },
               child: Text(
