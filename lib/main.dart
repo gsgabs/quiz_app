@@ -37,6 +37,13 @@ class _QuizPageState extends State<QuizPage> {
 
   List<Icon> scoreKeeper = [];
 
+  void limpaLista() {
+    setState(() {
+      scoreKeeper.clear();
+      print('ScoreKeeper limpo!'); // Para depuração
+    });
+  }
+
 
 
   @override
@@ -89,7 +96,7 @@ class _QuizPageState extends State<QuizPage> {
                       ),
                     );
                   }
-                  quizBrain.nextQuestion(context);
+                  quizBrain.nextQuestion(context, limpaLista);
                 }
                 );
               },
@@ -131,7 +138,7 @@ class _QuizPageState extends State<QuizPage> {
                       ),
                     );
                   }
-                  quizBrain.nextQuestion(context);
+                  quizBrain.nextQuestion(context, limpaLista);
                 });
               },
               child: Text(
